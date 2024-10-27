@@ -1,0 +1,8 @@
+numeros = list(map(int, input("Introduce 10 números separados por espacio: ").split()))
+suma_total = sum(numeros)
+media = suma_total / len(numeros)
+numeros.extend([suma_total, media])
+print("Números del usuario:", numeros[:-2])
+print("Suma total:", suma_total)
+print("Media:", media)
+print("Lista completa:", numeros)
