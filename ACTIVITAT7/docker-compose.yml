@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: postgres:13
+    container_name: db
+    environment:
+      POSTGRES_USER: luis
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: lmontiel23@ilg.cat
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "80:80"
+
+volumes:
+  local_pgdata:
