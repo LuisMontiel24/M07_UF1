@@ -1,31 +1,19 @@
 from connection import connect
 
-def create_users_table():
+def insert_user(name, surname, age, email):
     try:
         conn = connect()
         cursor = conn.cursor()
-        
-        sql = ''' 
-        CREATE TABLE IF NOT EXISTS USERS (
-            user_id SERIAL PRIMARY KEY,
-            user_name VARCHAR(100) NOT NULL,
-            user_surname VARCHAR(100) NOT NULL,
-            user_age INT NOT NULL,
-            user_email VARCHAR(255) NOT NULL
+        cursor.execute(
+            "INSERT INTO USERS (name, surname, age, email) VALUES (%s, %s, %s, %s)",
+            (name, surname, age, email)
         )
-        '''
-        
-        cursor.execute(sql)
-        conn.commit()  
-        
-        print("Tabla USERS creada correctamente.")
-        
+        conn.commit()
+        cursor.close()
+        conn.close()
+        print("Usuario agregado con éxito.")
     except Exception as e:
-        print("Error al crear la tabla:", e)
-    
-    finally:
-        cursor.close()  
-        conn.close()   
+        print("Error al insertar usuario:", e)
 
 if __name__ == "__main__":
-    create_users_table()
+    insert_user("Luis", "Montiel", 25, "lmontiel23@ilg.cat")
