@@ -1,6 +1,17 @@
 # Python y PostgreSQL
 # Luis Montiel
 
+En primer lugar, instalamos Docker en un entorno de Windows; seguidamente, instalamos PostgreSQL y Python en la terminal de Windows. Una vez hecho esto, creamos un archivo llamado docker-compose.yml con el siguiente contenido. Al levantar el contenedor, comenzamos a crear el archivo connection.py para verificar que se recibe la conexión. Después, empezamos a desarrollar el archivo main.py para realizar la conexión a la base de datos y llevar a cabo las operaciones create_table. Seguí una guía en internet para realizar la creación de la tabla, que incluía consultas SQL, y fui desarrollando main.py para ejecutar las operaciones necesarias.
+
+Problemas que he tenido en el desarrollo: Al crear el docker-compose.yml, el contenedor no se levantaba; tuve que borrar el archivo que guarda los datos temporalmente. Una vez hecho eso, volví a ejecutar el código, y el contenedor se levantó correctamente. Otro problema al desarrollar el código fue que las consultas para leer la tabla no funcionaban, ya que me faltaba un cursor en la función de SQL. En el apartado de capturas puedes ver el desarrollo de la actividad.
+
+
+## 0. Archivo docker-compose.yml
+
+Define la configuración para el contenedor de PostgreSQL y Python.
+
+![alt text](capturas/image.png)
+
 ## 1. Archivo connection.py
 
 Define la función connect para establecer la conexión con la base de datos PostgreSQL.
